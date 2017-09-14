@@ -2,6 +2,8 @@ f = open('data.txt', 'r')
 D = {}
 
 
+
+
 for Line in f :
     for i in Line.split() :
         if i in D :

@@ -1,26 +1,25 @@
-print("파일로 스도쿠퍼즐을 입력받습니다.")
-print("그 파일을 아래와 같이 보여줌")
-showingList = [0,0,0,0,0,0,0,0,0]
-exampleList = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
+import inputf
+import process 
 
-<<<<<<< HEAD
-for m in range(0, 9) :
-=======
-for t in range(0, 9) :
->>>>>>> 3863b92bed59b9999f75757167624930dcc4a389
-    print(showingList)
+Data1 =inputf.input_Data()
 
-for i in range(0, len(exampleList)) :
-    print("%d행 조사중" %(i+1))
-    print("기본리스트 초기화")
-    print("기본리스트와 겹치는 숫자가 행에 있으면 기본리스트에서 제외합니다.\n")
-    for j in range(0, len(exampleList[i])) :
-        print("%d행 %d열 조사중" %(i+1, j+1))
-        print("기본리스트와 겹치는 숫자가 열에 있으면 기본리스트에서 제외합니다.")
-        print("만약 3x3정사각형에 걸리면 그것도 제외. (이건 함수로 따로 처리)")
-        print("기본리스트 원소로 등록 \n")
+if Data1 == 0 :
+    print("오류가 났습니다. 프로그램을 다시 실행해 주세요.")
 
+Data2 = Data3 = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
+col = [{},{},{},{},{},{},{},{},{}]
+row = [{},{},{},{},{},{},{},{},{}]
+box = [{},{},{},{},{},{},{},{},{}]
 
+Data2 = process.make_Data2(Data2, Data1)
+Data3 = process.make_Data3(Data3, Data1)
+print(Data3)
 
-a = input("완성된 리스트 출력")
+col = process.make_stdset(Data1, col)
+row = process.make_stdset(Data2, row)
+box = process.make_stdset(Data3, box)
 
+answer = process.find_answer(Data1, diffset, col, row, box)
+
+for Line in answer :
+    print(Line)

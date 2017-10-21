@@ -34,10 +34,57 @@ def input_Data() :
         for j in temp.split() :
             Data[col].append(int(j))
 
-    #오류가 나면 0을 반환함#
-    if Boolean == False :
-        Data = 0
-    return Data
+    
+    return Data, Boolean
+
+
+
+
+
+def inputf_Data() :
+    Data = [[],[],[],[],[],[],[],[],[]]
+    Boolean = True
+    c = 0
+    f = open("sdokou.txt", "r")
+    count = 0
+    for col in f :
+        if Boolean == False :
+            break
+        count += 1
+
+        #숫자를 우선 리스트로 받아들임#
+        temp = col
+        L = []
+        for i in temp.split() :
+            L.append(int(i))
+
+        #숫자를 9개 넣지 않으면 오류#
+        if len(L) != 9 :
+            print("숫자 9개를 입력해야 합니다.(빈칸은 0으로 입력)\n")
+            Boolean = False
+
+        #0을 제외한 중복된 숫자를 넣으면 오류#
+        z = L.count(0)
+        if z > 0 :
+            count = 0
+            while count < z :
+                L.remove(0)
+                count +=1
+        S = set(L)
+        l = list(S)
+        if len(L) != len(l) :
+            print("%d행에 중복되는 숫자가 있습니다.\n"%count)
+            Boolean = False
+
+        #리스트로 받아들인 숫자들을 다시 2차원 리스트로 변환#
+        for j in temp.split() :
+            Data[c].append(int(j))
+        c += 1
+        
+            
+    
+    return Data, Boolean
+
 
 
 

@@ -26,10 +26,16 @@ def print_calculate_result(answer, setinfo, setlocation, listlocation, ask) :
         ask = ""
     elif len(setlocation) != 0 :
         print("아직 %d개의 빈칸이 남았습니다.\n\n"%len(setlocation))
-        ask = input("아직 확정되지 않은 답을 찾고 싶으면 아무 문자나 입력해주세요.종료하려면 엔터키를 누르세요.\n")
+        ask = input("아직 확정되지 않은 답을 찾고 싶으면 엔터를 입력해주세요.종료하려면 아무 문자나 입력해주세요.\n")
     return ask
 
     
+    
+def print_final_result(answer) :
+    print("-------------------------------------------------------------------------")
+    print("연산결과 입니다.\n\n")
+    for i in range(0, 9) :
+        print(answer[i])
     
     
               

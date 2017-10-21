@@ -126,6 +126,9 @@ def find_answer(Data, col, row, box) :
                         if a == 2 and b == 2 :
                              diffSet = diffSet.difference(box[8])
 
+                        if len(diffSet) == 0 :
+                            print("(%d, %d)에서 오류발생." %(c,d))
+
                         if len(diffSet) == 1 :
                             L = list(diffSet)
                             Data[c][d] = L[0]
@@ -133,6 +136,21 @@ def find_answer(Data, col, row, box) :
                         if len(diffSet) > 1 :
                             setlocation.append((c ,d))
                             setinfo[(c, d)] = diffSet
+
+    if len(listlocation) == 0 :
+        flag = False
+        for size in range(2,10) :
+            if flag == True :
+                break
+            for location in setlocation :
+                if len(setinfo[location]) == size :
+                    Data[location[0]][location[1]] = list(setinfo[location])[0]
+                    listlocation.append((location[0],location[1]))
+                    setlocation.remove((location[0],location[1]))
+                    flag = True
+                    break
+    
+            
 
                     
     return Data, setinfo, setlocation, listlocation
